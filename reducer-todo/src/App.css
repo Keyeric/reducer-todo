@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.ToggleComplete {
+  background-color: black;
+  color: red;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+.ToggleIncomplete {
+  background-color: black;
+  color: red;
+  cursor: pointer;
+}

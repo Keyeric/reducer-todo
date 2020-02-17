@@ -1,7 +1,11 @@
 export const initialState = {
-    item: "Learn about reducers",
-    completed: false,
-    id:62654986
+    tasks:[
+        {
+            item: "Learn about reducers",
+            completed: false,
+            id:62654986
+        }
+    ]
 }
 
 export const todoReducer = (state, action) => {
@@ -11,8 +15,7 @@ export const todoReducer = (state, action) => {
             const newTask = {}
             return{
                 ...state,
-                item: action.payload,
-                completed: false
+                tasks: [...state.tasks, newTask]
             }
             case "TOGGLE_COMPLETED":
             return{
@@ -21,7 +24,10 @@ export const todoReducer = (state, action) => {
             }
             case "REMOVE_COMPLETED":
                 return {
-                    ...state,
+                    ...state.filter((task)=>
+                        {
+                            return !task.completed;
+                        })
                 }
         default:
             return state;
