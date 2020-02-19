@@ -27,28 +27,29 @@ export const Todo = () => {
                     dispatch({ type: 'ADD_TASK', payload: newTaskName });
                 }}
                 > Add task
-                //I dont know, i quit, i dont have time for this.
                 </button>
             </div>
+
             <div>
-                {!state.completed ? (
-                    <div onClick={() => dispatch({ type: "TOGGLE_COMPLETED" })}
-                    className="ToggleIncomplete">
-                        {state.tasks.item}
+                {state.tasks.map(item => {
+                    console.log(item)
+                    return <div className = {item.completed ? "ToggleComplete" : "ToggleIncomplete" } 
+                    key = {item.id}
+                        onClick={() => {
+                            dispatch({ type: 'TOGGLE_COMPLETED', payload: item});
+                        }}>{item.item}
                     </div>
-                ) : (
-                    <div onClick={() => dispatch({ type: "TOGGLE_COMPLETED" })}
-                    className="ToggleComplete">
-                        {state.tasks.item}
-                    </div>
-                    )}
+                    }
+                )}
             </div>
+
             <div>
-            <button 
-                onClick={() => {
-                    dispatch({ type: 'REMOVE_COMPLETED'});
-                }}
-                > Clear Finished
+                <button 
+                    onClick={() => {
+                        dispatch({ type: 'REMOVE_COMPLETED'});
+                    }}
+                    > 
+                    Clear Finished
                 </button>
             </div>
         </section>
